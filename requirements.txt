@@ -1,2 +1,4 @@
 bottle==0.12.13
+line_bot_sdk==0.16.0
+
 
