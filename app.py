@@ -19,7 +19,7 @@ def hello_world():
 def get_info():
         data = request.json
         try:
-            line_bot_api.push_message(userID, TextSendMessage(text=data))
+            line_bot_api.push_message(userID, TextSendMessage(text="hatena"))
         except LineBotApiError as e:
                 return "asdasd"
         
