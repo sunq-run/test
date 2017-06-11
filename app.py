@@ -17,9 +17,10 @@ def hello_world():
     
 @route("/webhook", method='POST')
 def get_info():
-        data = request.json["events"]["timestamp"]
+        data = request.json()
+        txdata = data["events"]["timestamp"]
         try:
-            line_bot_api.push_message(userID, TextSendMessage(text=str(data)))
+            line_bot_api.push_message(userID, TextSendMessage(text=str(txdata)))
         except LineBotApiError as e:
                 return "asdasd"
         
