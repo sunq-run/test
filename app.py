@@ -1,5 +1,5 @@
 import os
-from bottle import route, run
+from bottle import route, run, request
 from linebot import LineBotApi
 from linebot.models import TextSendMessage
 from linebot.exceptions import LineBotApiError
@@ -15,6 +15,13 @@ def hello_world():
                 return "Sorry..."
         return "HELLO TAKEYUKI"
     
-
+@route("/webhook", method='POST')
+def get_info():
+        data = request.json
+        try:
+            line_bot_api.push_message(userID, TextSendMessage(text=data))
+        except LineBotApiError as e:
+                return "asdasd"
+        
 run(host="0.0.0.0", port=int(os.environ.get("PORT", 5000)))
 
