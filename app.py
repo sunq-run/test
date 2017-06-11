@@ -18,7 +18,7 @@ def hello_world():
 @route("/webhook", method='POST')
 def get_info():
         data = request.json
-        txdata = data["events"]
+        txdata = data["events"][0]
         sys.stderr.write(str(type(txdata)))
         try:
             line_bot_api.push_message(userID, TextSendMessage(text=txdata))
