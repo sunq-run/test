@@ -18,6 +18,8 @@ def hello_world():
 @route("/webhook", method='POST')
 def get_info():
         data = request.json
+        f = open("qweqwe","w")
+        f.write(data)
         try:
             line_bot_api.push_message(userID, TextSendMessage(text="hatena"))
         except LineBotApiError as e:
