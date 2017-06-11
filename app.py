@@ -1,4 +1,4 @@
-import os
+import os,sys
 from bottle import route, run, request
 from linebot import LineBotApi
 from linebot.models import TextSendMessage
@@ -17,8 +17,9 @@ def hello_world():
     
 @route("/webhook", method='POST')
 def get_info():
-        data = request.json()
-        txdata = data["events"]["timestamp"]
+        data = request.json
+        sys.stderr.write(type(data))
+        #txdata = data["events"]["timestamp"]
         try:
             line_bot_api.push_message(userID, TextSendMessage(text=str(txdata)))
         except LineBotApiError as e:
